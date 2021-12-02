@@ -17,19 +17,19 @@
 			<div class="sidebar-menu">
 				<ul>
 					<li>
-						<a href="" class="active"><span class="las la-home"></span>
+						<a href="dash.html" class="active"><span class="las la-home"></span>
 						<span>Dashboard</span></a>
 					</li>
 					<li>
-						<a href=""><span class="las la-users"></span>
+						<a href="Barangay Info.html"><span class="las la-users"></span>
 						<span>Resident Information</span></a>
 					</li>
 					<li>
-						<a href=""><span class="las la-clipboard-list"></span>
+						<a href="Barangay Blotter.html"><span class="las la-clipboard-list"></span>
 						<span>Blotter Records</span></a>
 					</li>
 					<li>
-						<a href=""><span class="las la-calendar"></span>
+						<a href="Barangay Schedules.html"><span class="las la-calendar"></span>
 						<span>Settlement Schedules</span></a>
 					</li>
 					<li>
@@ -56,14 +56,10 @@
 						</label>
 						Dashboard
 					</h2>
-					<div class="search-wrapper">
-						<span class="las la-search"></span>
-						<input type="search" placeholder="Search here" />
-					</div>
 					<div class="user-wrapper">
 						<img src="kpop.jpg" width="40px" height="40px" alt="">
 						<div>
-							<h4>Alexander Louise E. Palacio</h4>
+							<h4>Albert - Jonniel T. Vicente</h4>
 							<small>Member</small>
 						</div>
 					</div>
