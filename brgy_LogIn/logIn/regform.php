@@ -5,14 +5,16 @@ require_once "configone.php";
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
 $sql = "INSERT INTO brgyy_db 
-(family_name,first_name,middle_name,alias,face_marks,birth_date,birth_place,sex,civil_status,nationality,religion,occupation,sector,spouse_name,spouse_occupation,voter_status,voter_active,city_address,prov_address,purok,home_numone,home_numtwo,mob_numone,mob_numtwo,email,resident_type,resident_status) 
-VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)";
+(resident_id,family_name,first_name,middle_name,alias,face_marks,birth_date,birth_place,sex,civil_status,nationality,religion,occupation,sector,spouse_name,spouse_occupation,voter_status,voter_active,city_address,prov_address,purok,home_numone,home_numtwo,mob_numone,mob_numtwo,email,resident_type,resident_status,date_time,transaction_id) 
+VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)";
 
 if ($stmt = $mysqli->prepare($sql)) {
 //Bind variables to the prepared statement as parameters
-$stmt->bind_param("sssssssssssssssssssssssssss", $param_family_name, $param_first_name, $param_middle_name, $param_alias, $param_face_marks, $param_birth_date, $param_birth_place,$param_sex, $param_civil_status, $param_nationality, $param_religion, $param_occupation, $param_sector, $param_spouse_name, $param_spouse_occupation, $param_voter_status, $param_voter_active, $param_city_address, $param_prov_address, $param_purok, $param_home_numone, $param_home_numtwo, $param_mob_numone, $param_mob_numtwo, $param_email, $param_resident_type, $param_resident_status);
+$stmt->bind_param("ssssssssssssssssssssssssssssss", $param_resident_id, $param_family_name, $param_first_name, $param_middle_name, $param_alias, $param_face_marks, $param_birth_date, $param_birth_place,$param_sex, $param_civil_status, $param_nationality, $param_religion, $param_occupation, $param_sector, $param_spouse_name, $param_spouse_occupation, $param_voter_status, $param_voter_active, $param_city_address, $param_prov_address, $param_purok, $param_home_numone, $param_home_numtwo, $param_mob_numone, $param_mob_numtwo, $param_email, $param_resident_type, $param_resident_status, $param_date_time, $param_transaction_id);
 
+date_default_timezone_set("Asia/Manila");
 //Set parameters
+		$param_resident_id = date("Y");
 		$param_family_name = trim($_POST["family_name"]);
 		$param_first_name = trim($_POST["first_name"]);
         $param_middle_name = trim($_POST["middle_name"]);
@@ -40,6 +42,8 @@ $stmt->bind_param("sssssssssssssssssssssssssss", $param_family_name, $param_firs
         $param_email = trim($_POST["email"]);
         $param_resident_type = trim($_POST["resident_type"]);
         $param_resident_status = trim($_POST["resident_status"]);
+		$param_date_time = date("Ymd") . date(" h:i:sa");
+		$param_transaction_id = date("Ymd") . date("his");
      
         // Attempt to execute the prepared statement
         if ($stmt->execute()) {

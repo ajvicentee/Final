@@ -91,7 +91,7 @@
 	
 }
 header{
-	background:#e5e6e4;
+	background:#fbfbf2;
 	display:flex;
 	justify-content:space-between;
 	padding:1rem 1.5rem;
@@ -183,7 +183,7 @@ main{
 	margin-top: 3.5rem;
 	display: grid; 
 	grid-gap:2rem;
-	grid-template-columns: 100%;
+	grid-template-columns: 65% auto;
 }
 .card{
 	background: #fff;
@@ -206,6 +206,14 @@ main{
 	color: #fff;
 	font-size: .8rem;
 	padding: .5rem 1rem;
+	border: 1px solid #800020;
+}
+button{
+	background-color: #800020;
+	border-radius: 10px;
+	color: #fff;
+	font-size: .8rem;
+	padding: .3rem 1rem;
 	border: 1px solid #800020;
 }
 table{

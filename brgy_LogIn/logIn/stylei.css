@@ -208,6 +208,14 @@ main{
 	padding: .5rem 1rem;
 	border: 1px solid #800020;
 }
+button{
+	background-color: #800020;
+	border-radius: 10px;
+	color: #fff;
+	font-size: .8rem;
+	padding: .3rem 1rem;
+	border: 1px solid #800020;
+}
 table{
 	border-collapse: collapse;
 }
