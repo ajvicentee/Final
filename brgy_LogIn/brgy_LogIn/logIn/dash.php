@@ -16,6 +16,12 @@
 			<h2><span>Manila City, Philippines</span></h2>
 		</div>
 
+		<script>
+			function logout() {
+				location.href = "logout.php";
+			}
+		</script>
+
 		<div class="sidebar-menu">
 			<ul>
 				<li>
@@ -23,7 +29,7 @@
 						<span>Dashboard</span></a>
 				</li>
 				<li>
-					<a href="Barangay Info.php"><span class="las la-users"></span>
+					<a href="Barangay Info.php"><span class="las la-calendar"></span>
 						<span>Resident Information</span></a>
 				</li>
 				<li>
@@ -33,10 +39,6 @@
 				<li>
 					<a href="Barangay Cert.php"><span class="las la-certificate"></span>
 						<span>Certificate Insurance</span></a>
-				</li>
-				<li>
-					<a href="Barangay Account.php"><span class="las la-circle"></span>
-						<span>Accounts</span></a>
 				</li>
 				<li>
 					<a href="Barangay Config.php"><span class="las la-cog"></span>
@@ -59,7 +61,7 @@
 				<div>
 					<h4>Albert - Jonniel T. Vicente</h4>
 					<small>Member</small>
-					<button>LOG OUT <span class="las la-sign-out-alt"></span></button>
+					<button type="button" class="button" onclick="logout()">LOG OUT <span class="las la-sign-out-alt"></span></button>
 				</div>
 			</div>
 		</header>
@@ -67,7 +69,6 @@
 			<div class="cards">
 				<div class="card-single">
 					<div>
-						<h1>1,012</h1>
 						<span>Total Registered Population</span>
 					</div>
 					<div>
@@ -76,7 +77,7 @@
 				</div>
 				<div class="card-single">
 					<div>
-						<h1>79</h1>
+
 						<span>Male</span></span>
 					</div>
 					<div>
@@ -85,7 +86,7 @@
 				</div>
 				<div class="card-single">
 					<div>
-						<h1>124</h1>
+
 						<span>Female</span>
 					</div>
 					<div>
@@ -94,7 +95,7 @@
 				</div>
 				<div class="card-single">
 					<div>
-						<h1>894</h1>
+
 						<span>REGISTERED VOTERS</span>
 					</div>
 					<div>
@@ -109,69 +110,29 @@
 						<div class="card-header">
 							<h3>Puroks/Areas</h3>
 
-							<button>See all <span class="las la-arrow-down"></span></button>
+							<a href="Add Purok.html"><button> <span class="las la-plus"></span> Add Purok</button>
 						</div>
 						<div class="card-body">
 							<div class="table-responsive">
 								<table width="100%">
 									<thead>
 										<tr>
+											<td>Action</td>
 											<td>Area Name</td>
 											<td>Area Count</td>
 											<td>Status</td>
 										</tr>
 									</thead>
-									<tbody>
-										<tr>
-											<td>UI/UX Design</td>
-											<td>UI team</td>
-											<td>
-												<span class="status purple"></span>
-												review
-											</td>
-										</tr>
-										<tr>
-											<td>Web Development</td>
-											<td>Frontend</td>
-											<td>
-												<span class="status pink"></span>
-												in progress
-											</td>
-										</tr>
-										<tr>
-											<td>ushop app</td>
-											<td>Mobile team</td>
-											<td>
-												<span class="status orange"></span>
-												pending
-											</td>
-										</tr>
-										<tr>
-											<td>UI/UX Design</td>
-											<td>UI team</td>
-											<td>
-												<span class="status purple"></span>
-												review
-											</td>
-										</tr>
-										<tr>
-											<td>Web Development</td>
-											<td>Frontend</td>
-											<td>
-												<span class="status pink"></span>
-												in progress
-											</td>
-										</tr>
-										<tr>
-											<td>ushop app</td>
-											<td>Mobile team</td>
-											<td>
-												<span class="status orange"></span>
-												pending
-											</td>
-										</tr>
-									</tbody>
 								</table>
+								<tbody>
+									<tr>
+										<td>
+											<a href="View Purok.html"><button type="button" class="btn btn-primary"><i class="lar la-eye"></i></button></a>
+											<a href="Update Purok.html"><button type="button" class="btn btn-danger"><i class="las la-user-edit"></i></button></a>
+											<button type="button" class="btn btn-delete"><i class="las la-trash"></i></button>
+										</td>
+									</tr>
+								</tbody>
 							</div>
 						</div>
 					</div>
@@ -181,8 +142,9 @@
 						<div class="card-header">
 							<h3>Barangay Officials </h3>
 
-							<button>See all <span class="las la-arrow-down"></span></button>
+							<a href="Add Official.html"><button> <span class="las la-plus"></span> New Barangay Official</button>
 						</div>
+
 						<div class="card-body">
 							<div class="customer">
 								<div class="info">

@@ -9,13 +9,28 @@
 </head>
 
 <body>
+	<?php require_once 'process.php'; ?>
+	<?php
+	if (isset($_SESSION['message'])) : ?>
+		<div class="alert alert-<?= $_SESSION['msg_type'] ?>">
+
+			<?php
+			echo $_SESSION['message'];
+			unset($_SESSION['message']);
+			?>
+		</div>
+	<?php endif ?>
 	<input type="checkbox" id="nav-toggle">
 	<div class="sidebar">
 		<div class="sidebar-brand">
 			<h2><span class="lab la-accusoft"></span><span> Barangay Balumpare</span></h2>
 			<h2><span>Manila City, Philippines</span></h2>
 		</div>
-
+		<script>
+			function logout() {
+				location.href = "logout.php";
+			}
+		</script>
 		<div class="sidebar-menu">
 			<ul>
 				<li>
@@ -35,11 +50,7 @@
 						<span>Certificate Insurance</span></a>
 				</li>
 				<li>
-					<a href="Barangay Account.php"><span class="las la-circle"></span>
-						<span>Accounts</span></a>
-				</li>
-				<li>
-					<a href="Barangay Config"><span class="las la-cog"></span>
+					<a href="Barangay Config.php"><span class="las la-cog"></span>
 						<span>Barangay Config</span></a>
 				</li>
 			</ul>
@@ -60,10 +71,12 @@
 			</div>
 			<div class="user-wrapper">
 				<img src="kpop.jpg" width="40px" height="40px" alt="">
-				<div>
-					<h4>Albert - Jonniel T. Vicente</h4>
-					<small>Member</small>
-					<button>LOG OUT <span class="las la-sign-out-alt"></span></button>
+				<div class="user-wrapper">					
+					<div>
+						<h4>Albert - Jonniel T. Vicente</h4>
+						<small>Member</small>
+						<button type="button" class="button" onclick="logout()" style=" background-color: #800020; border-radius: 10px; color: #fff;font-size: .8rem; padding: .3rem 1rem; border: 1px solid #800020;">LOG OUT <span class="las la-sign-out-alt"></span></button>
+					</div>
 				</div>
 			</div>
 		</header>
@@ -82,38 +95,47 @@
 								<table width="100%">
 									<thead>
 										<tr>
+											<td>Action</td>
 											<td>ResidentID</td>
 											<td>Family Name</td>
 											<td>First Name</td>
 											<td>Middle Name</td>
 											<td>Gender</td>
 											<td>Birthdate</td>
-										</tr>
-										<tr>
-											<td>
-												<button type="button" class="btn btn-primary"> <i class="lar la-eye"></i></button>
-												<button type="button" class="btn btn-danger"><i class="las la-user-edit"></i></button>
-											</td>
-											<td>UI team</td>
-
-											<td>
-												<span class="status purple"></span>
-												review
-											</td>
+											
 										</tr>
 									</thead>
 									<tbody>
+										<tr>
+											<td>
+												<a href="view Resident.php"><button type="button" class="btn btn-primary"><i class="lar la-eye"></i></button></a>
+												<a href="update Resident.php"><button type="button" class="btn btn-danger"><i class="las la-user-edit"></i></button></a>
+												<button type="button" class="btn btn-delete"><i class="las la-trash"></i></button>
+											</td>
+										</tr>
+									</tbody>
+									<?php
+									$conn = mysqli_connect("localhost", "root", "", "brgy_db");
+									$sql = "SELECT * FROM brgyy_db";
+									$result = $conn->query($sql);
+									?>
+									<tbody>
 										<?php
-										$conn = mysqli_connect("localhost", "root", "", "brgy_db");
-										$sql = "SELECT * FROM brgyy_db";
-										$result = $conn->query($sql);
-
 										if ($result->num_rows > 0) {
-											while ($row = $result->fetch_assoc()) {
-												echo "<tr><td>" . $row["id"] . "</td><td>" . $row["resident_id"] . "</td><td>" . $row["family_name"] . "</td><td>" . $row["first_name"] . "</td><td>" . $row["middle_name"] . "</td><td>" . $row["alias"] . "</td><td>" . $row["sex"] . "</td><td>" . $row["birth_date"] . "</td><td>" . $row["birth_place"] . "</td><td>" . $row["civil_status"] . "</td><td>" . $row["voter_status"] .  "</td></tr>";
+											while ($row = $result->fetch_assoc()) { ?>
+												<tr>
+													<td> <?php echo $row["resident_id"] ?></td>
+													<td> <?php echo $row["family_name"] ?></td>
+													<td> <?php echo $row["first_name"] ?></td>
+													<td> <?php echo $row["middle_name"] ?></td>
+													<td> <?php echo $row["sex"] ?></td>
+													<td> <?php echo $row["birth_date"] ?></td>
+													<td><a href="processinfo.php?delete=<?php echo $row['id']; ?>">DELETE</a>
+													<td>
+												</tr>
+
+										<?php
 											}
-										} else {
-											echo "No Results";
 										}
 										?>
 									</tbody>
