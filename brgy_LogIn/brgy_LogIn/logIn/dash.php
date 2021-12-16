@@ -29,12 +29,8 @@
 						<span>Dashboard</span></a>
 				</li>
 				<li>
-					<a href="Barangay Info.php"><span class="las la-calendar"></span>
+					<a href="Barangay Info.php"><span class="las la-users"></span>
 						<span>Resident Information</span></a>
-				</li>
-				<li>
-					<a href="Barangay Schedules.php"><span class="las la-calendar"></span>
-						<span>Settlement Schedules</span></a>
 				</li>
 				<li>
 					<a href="Barangay Cert.php"><span class="las la-certificate"></span>
@@ -57,10 +53,9 @@
 				Dashboard
 			</h2>
 			<div class="user-wrapper">
-				<img src="kpop.jpg" width="40px" height="40px" alt="">
 				<div>
-					<h4>Albert - Jonniel T. Vicente</h4>
-					<small>Member</small>
+					<h4>ALEX</h4>
+					<small>Admin</small>
 					<button type="button" class="button" onclick="logout()">LOG OUT <span class="las la-sign-out-alt"></span></button>
 				</div>
 			</div>
@@ -69,6 +64,25 @@
 			<div class="cards">
 				<div class="card-single">
 					<div>
+						<?php
+						error_reporting(0);
+
+						$conn = mysqli_connect("localhost", "root", "", "brgy_db") or die(mysqli_error());
+
+						$query = "SELECT COUNT(*) AS count FROM brgyy_db";
+
+						$query_result = mysqli_query($conn, $query);
+
+						while ($row = mysqli_fetch_assoc($query_result)) {
+							$output = $row['count'];
+						}
+
+						$sql = "SELECT * FROM brgyy_db";
+
+						$result = mysqli_query($conn, $sql);
+
+						?>
+						<h1><?php echo $output; ?></h1>
 						<span>Total Registered Population</span>
 					</div>
 					<div>
@@ -77,7 +91,26 @@
 				</div>
 				<div class="card-single">
 					<div>
+						<?php
+						error_reporting(0);
 
+						$conn = mysqli_connect("localhost", "root", "", "brgy_db") or die(mysqli_error());
+
+						$query = "SELECT COUNT(*) AS count FROM brgyy_db WHERE sex = 'Male'";
+
+						$query_result = mysqli_query($conn, $query);
+
+						while ($row = mysqli_fetch_assoc($query_result)) {
+							$output = $row['count'];
+						}
+
+
+						$sql = "SELECT * FROM brgyy_db";
+
+						$result = mysqli_query($conn, $sql);
+
+						?>
+						<h1><?php echo $output; ?></h1>
 						<span>Male</span></span>
 					</div>
 					<div>
@@ -86,7 +119,26 @@
 				</div>
 				<div class="card-single">
 					<div>
+						<?php
+						error_reporting(0);
 
+						$conn = mysqli_connect("localhost", "root", "", "brgy_db") or die(mysqli_error());
+
+						$query = "SELECT COUNT(*) AS count FROM brgyy_db WHERE sex = 'Female'";
+
+						$query_result = mysqli_query($conn, $query);
+
+						while ($row = mysqli_fetch_assoc($query_result)) {
+							$output = $row['count'];
+						}
+
+
+						$sql = "SELECT * FROM brgyy_db";
+
+						$result = mysqli_query($conn, $sql);
+
+						?>
+						<h1><?php echo $output; ?></h1>
 						<span>Female</span>
 					</div>
 					<div>
@@ -95,7 +147,26 @@
 				</div>
 				<div class="card-single">
 					<div>
+						<?php
+						error_reporting(0);
 
+						$conn = mysqli_connect("localhost", "root", "", "brgy_db") or die(mysqli_error());
+
+						$query = "SELECT COUNT(*) AS count FROM brgyy_db WHERE voter_status = 'Yes'";
+
+						$query_result = mysqli_query($conn, $query);
+
+						while ($row = mysqli_fetch_assoc($query_result)) {
+							$output = $row['count'];
+						}
+
+
+						$sql = "SELECT * FROM brgyy_db";
+
+						$result = mysqli_query($conn, $sql);
+
+						?>
+						<h1><?php echo $output; ?></h1>
 						<span>REGISTERED VOTERS</span>
 					</div>
 					<div>
@@ -110,7 +181,7 @@
 						<div class="card-header">
 							<h3>Puroks/Areas</h3>
 
-							<a href="Add Purok.html"><button> <span class="las la-plus"></span> Add Purok</button>
+							<a href="Add Purok.php"><button> <span class="las la-plus"></span> Add Purok</button>
 						</div>
 						<div class="card-body">
 							<div class="table-responsive">
@@ -127,8 +198,8 @@
 								<tbody>
 									<tr>
 										<td>
-											<a href="View Purok.html"><button type="button" class="btn btn-primary"><i class="lar la-eye"></i></button></a>
-											<a href="Update Purok.html"><button type="button" class="btn btn-danger"><i class="las la-user-edit"></i></button></a>
+											<a href="View Purok.php"><button type="button" class="btn btn-primary"><i class="lar la-eye"></i></button></a>
+											<a href="Update Purok.php"><button type="button" class="btn btn-danger"><i class="las la-user-edit"></i></button></a>
 											<button type="button" class="btn btn-delete"><i class="las la-trash"></i></button>
 										</td>
 									</tr>
