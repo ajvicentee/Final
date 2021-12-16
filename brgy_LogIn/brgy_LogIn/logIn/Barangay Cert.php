@@ -59,7 +59,7 @@
 				<label for="nav-toggle">
 					<span class="las la-bars"></span>
 				</label>
-				Resident Information
+				Certificate Insurance
 			</h2>
 			<form action="searchcert.php" method="GET">
 				<div class="search-wrapper">
